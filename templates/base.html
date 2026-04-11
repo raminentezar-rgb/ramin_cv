@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ramin Entezar | AI & Full-Stack Developer{% endblock %}</title>
+    <meta name="description" content="Portfolio of Ramin Entezar, a professional Django developer and AI automation expert.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="glow-overlay"></div>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Ramin Entezar Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Applications</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact" class="btn-primary">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Ramin Entezar. AI-Powered Portfolio.</p>
+            <div class="social-links">
+                <a href="https://github.com/raminentezar-rgb" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/ramin-entezar-a20820350/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://t.me/fullstackdeveloper2026" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

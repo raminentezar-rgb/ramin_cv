@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Ramin Entezar</h1>
+            <p>Full-Stack Developer & AI Automation Specialist. Crafting intelligent solutions for the modern web.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn-primary">View Applications</a>
+                <a href="#experience" class="btn-secondary" style="margin-left: 1rem; color: #a0a0a0; text-decoration: none;">My Journey</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-border">
+                <div class="image-container">
+                    <img src="{% static 'images/profile.jpg' %}" alt="Ramin Entezar">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Service Applications</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 3rem;">Ready-to-deploy solutions and custom project capabilities.</p>
+    
+    <div class="grid">
+        {% for category in categories %}
+            {% for project in category.projects.all %}
+            <div class="glass-card">
+                <i class="{{ category.icon }}"></i>
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                {% if project.link %}
+                <a href="{{ project.link }}" class="btn-link" style="color: var(--accent-color); margin-top: 1rem; display: inline-block; text-decoration: none;">Learn More →</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% empty %}
+            <!-- Fallback if no data -->
+            <div class="glass-card">
+                <i class="fas fa-robot"></i>
+                <h3>Telegram Bot Solutions</h3>
+                <p>Custom advanced bots with AI integration for business automation and customer service.</p>
+            </div>
+            <div class="glass-card">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp Business Bots</h3>
+                <p>Scaling communications with intelligent WhatsApp API integrations and automated workflows.</p>
+            </div>
+            <div class="glass-card">
+                <i class="fas fa-calculator"></i>
+                <h3>Accounting Systems</h3>
+                <p>High-performance backend systems built with Django for precise financial management.</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <h2 style="font-size: 2.5rem; margin-bottom: 3.5rem;">Core Expertise</h2>
+    <div class="grid">
+        {% for cat, skill_list in skills_by_cat.items %}
+        <div class="glass-card">
+            <h4 style="margin-bottom: 1.5rem; color: var(--accent-color);">{{ cat }}</h4>
+            {% for skill in skill_list %}
+            <div class="skill-bar">
+                <div class="skill-info">
+                    <span>{{ skill.name }}</span>
+                    <span>{{ skill.proficiency }}%</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: {{ skill.proficiency }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience">
+    <h2 style="font-size: 2.5rem; margin-bottom: 3.5rem;">Professional Journey</h2>
+    <div class="experience-timeline">
+        {% for exp in experiences %}
+        <div class="glass-card" style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="color: var(--accent-color);">{{ exp.job_title }}</h3>
+                <span style="color: var(--text-secondary); font-size: 0.85rem;">{{ exp.start_date|date:"M Y" }} - {% if exp.is_current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}</span>
+            </div>
+            <h4 style="margin-bottom: 1rem;">{{ exp.company }}</h4>
+            <p>{{ exp.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" style="text-align: center;">
+    <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 4rem;">
+        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Let's Build Something Great</h2>
+        <p style="margin-bottom: 3rem; color: var(--text-secondary);">Interested in a custom AI bot or a high-performance web application? Let's discuss your project.</p>
+        <a href="https://wa.me/905373474903" target="_blank" class="btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Message on WhatsApp</a>
+    </div>
+</section>
+{% endblock %}

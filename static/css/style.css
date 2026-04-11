@@ -1,0 +1,309 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --accent-color: #00f2ff;
+    --accent-secondary: #7000ff;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.glow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 10%, rgba(0, 242, 255, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 80px;
+    width: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Sections */
+section {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-border {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    padding: 10px;
+    background: linear-gradient(45deg, var(--accent-secondary), var(--accent-color));
+    animation: floating 6s ease-in-out infinite;
+    box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--bg-color);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(45deg, var(--accent-secondary), var(--accent-color));
+    color: white !important;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3);
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+/* Glass Card */
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+}
+
+.glass-card i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.glass-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.glass-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Skills */
+.skill-bar {
+    margin-bottom: 1.5rem;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.bar-bg {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--accent-secondary), var(--accent-color));
+    border-radius: 3px;
+}
+
+/* Footer */
+footer {
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 3rem;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .image-border {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .nav-links { display: none; }
+    .footer-content { flex-direction: column; gap: 2rem; }
+}
