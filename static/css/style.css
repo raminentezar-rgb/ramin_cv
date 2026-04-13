@@ -178,11 +178,14 @@ section {
 .btn-primary {
     background: linear-gradient(45deg, var(--accent-secondary), var(--accent-color));
     color: white !important;
-    padding: 0.8rem 2rem;
+    padding: 1.2rem 3rem;
     border-radius: 50px;
     font-weight: 600;
     text-decoration: none;
     transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+    max-width: 100%;
+    font-size: 1.1rem;
 }
 
 .btn-primary:hover {
@@ -306,4 +309,18 @@ footer {
     .hero h1 { font-size: 3rem; }
     .nav-links { display: none; }
     .footer-content { flex-direction: column; gap: 2rem; }
+    
+    /* Mobile button fixes */
+    .btn-primary {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    section#contact .glass-card {
+        padding: 2rem 1rem !important;
+    }
+    
+    .logo-img {
+        height: 60px;
+    }
 }
